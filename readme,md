@@ -1,0 +1,57 @@
+# Chat with PDF using DeepSeek 💬📄
+
+一个可以与 PDF 文件对话的应用。  
+本项目基于 **Streamlit + LangChain + FAISS**，使用 **DeepSeek API** 作为大语言模型，  
+并用本地 HuggingFace Embeddings (`all-MiniLM-L6-v2`) 进行文本向量化。  
+
+---
+
+## ✨ 功能
+- 上传多个 PDF 文件并抽取文本
+- 将文本切分为小块并存储到本地向量数据库（FAISS）
+- 基于 DeepSeek LLM 进行问答
+- 友好的 Streamlit Web UI
+
+---
+
+## 📂 项目结构
+.
+├── app.py # 主程序
+├── requirements.txt # 依赖列表
+├── .env.example # 环境变量示例（不包含真实密钥）
+├── faiss_index/ # 本地向量数据库（自动生成，可忽略上传）
+└── model/ # 本地 HuggingFace Embeddings 模型
+
+yaml
+复制代码
+
+---
+
+## ⚙️ 环境配置
+
+1. 克隆本项目：
+   ```bash
+   git clone https://github.com/yourname/pdf-chatbot-deepseek.git
+   cd pdf-chatbot-deepseek
+创建虚拟环境并安装依赖：
+
+bash
+复制代码
+python -m venv .venv
+source .venv/bin/activate   # Linux/Mac
+.venv\Scripts\activate      # Windows
+pip install -r requirements.txt
+配置 .env 文件（不要上传到 GitHub！）
+
+bash
+复制代码
+cp .env.example .env
+编辑 .env，加入你的 DeepSeek API Key：
+
+ini
+复制代码
+DEEPSEEK_API_KEY=your_api_key_here
+🚀 运行
+bash
+复制代码
+streamlit run app.py
